@@ -7,155 +7,149 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232C2522'/%3E%3Ctext x='50' y='62' font-size='42' fill='white' text-anchor='middle' font-family='Playfair Display, Georgia, serif'%3ES%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Instrument+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.1; }
+        :root {
+            --font-sans: 'Instrument Sans', system_ui, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+        
+        body { 
+            font-family: var(--font-sans); 
+            font-feature-settings: "ss02";
+        }
+        
+        .heading-serif { 
+            font-family: var(--font-serif); 
+            font-weight: 700; 
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+        
+        .premium-shadow {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 
+                       0 4px 6px -4px rgb(0 0 0 / 0.08);
+        }
+        
+        .glass {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+        }
+        
+        .dark .glass {
+            background: rgba(28, 25, 23, 0.85);
+        }
     </style>
 </head>
 <body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
-    <nav class="bg-white dark:bg-[#2C2522] border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
-        <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-[#2C2522] dark:bg-[#C9A26B] rounded-full flex items-center justify-center">
-                    <span class="text-white dark:text-[#2C2522] font-bold text-xl">S</span>
-                </div>
-                <span class="font-semibold text-2xl">Skinnovation <span class="text-[#C9A26B]">LAB</span></span>
-            </div>
-
-            <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-colors">Over ons</a>
-                <a href="behandelingen.html" class="hover:text-[#C9A26B] transition-colors">Behandelingen</a>
-                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-colors">Resultaten</a>
-                <a href="contact.html" class="hover:text-[#C9A26B] transition-colors">Contact</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
-            </div>
-
+    <!-- NAV -->
+    <nav class="bg-white/90 dark:bg-[#2C2522]/90 backdrop-blur-xl border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex justify-between items-center">
             <div class="flex items-center gap-x-4">
-                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full transition-all">
+                <div class="w-10 h-10 bg-[#2C2522] dark:bg-[#C9A26B] rounded-2xl flex items-center justify-center">
+                    <span class="text-white dark:text-[#2C2522] font-bold text-2xl">S</span>
+                </div>
+                <div>
+                    <span class="font-semibold text-3xl tracking-tight">Skinnovation</span>
+                    <span class="text-[#C9A26B] font-light text-3xl">LAB</span>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-x-10 text-[15px]">
+                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-all font-medium">Over ons</a>
+                <a href="behandelingen.html" class="hover:text-[#C9A26B] transition-all font-medium">Behandelingen</a>
+                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-all font-medium">Resultaten</a>
+                <a href="contact.html" class="hover:text-[#C9A26B] transition-all font-medium">Contact</a>
+                <a href="boek.html" class="px-8 py-3.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-3xl text-[15px] font-semibold hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
+            </div>
+
+            <div class="flex items-center gap-x-3">
+                <button id="dark-mode-toggle" class="w-11 h-11 flex items-center justify-center text-2xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-2xl transition-all">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block"></i>
                 </button>
+                
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
+                    <button id="mobile-menu-btn" class="w-11 h-11 flex items-center justify-center text-3xl">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
-            <div class="flex flex-col gap-y-4 text-lg">
-                <a href="over-ons.html" class="py-2">Over ons</a>
-                <a href="behandelingen.html" class="py-2">Behandelingen</a>
-                <a href="resultaten.html" class="py-2">Resultaten</a>
-                <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
-            </div>
-        </div>
     </nav>
 
-    <header class="max-w-screen-2xl mx-auto px-6 pt-16 pb-20">
-        <div class="max-w-3xl">
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EDE9E3] dark:bg-[#3A3230] text-sm mb-6">
-                <span class="w-2 h-2 bg-[#C9A26B] rounded-full mr-2"></span>
-                <span>Malemstraat 1, Gent</span>
+    <!-- HERO -->
+    <header class="max-w-screen-2xl mx-auto px-8 pt-20 pb-24">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-x-2 px-5 py-2 rounded-full bg-white dark:bg-[#2C2522] border border-[#EDE9E3] dark:border-[#3A3230] mb-8">
+                <div class="w-2 h-2 bg-[#C9A26B] rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium">Malemstraat 1, Gent • 2026</span>
             </div>
             
-            <h1 class="text-6xl md:text-7xl leading-none tracking-tighter heading-serif mb-6">
-                Hier voor een<br>prachtige en gezonde jij.
+            <h1 class="text-[72px] md:text-[92px] leading-[0.95] tracking-[-4.5px] heading-serif mb-8">
+                Hier voor een<br>prachtige en<br>gezonde jij.
             </h1>
             
-            <p class="text-xl text-[#5C5249] dark:text-[#B8B0A8] max-w-lg mb-10">
+            <p class="max-w-lg text-2xl text-[#5C5249] dark:text-[#B8B0A8] mb-12">
                 Effectieve, veilige en persoonlijke behandelingen voor huid, lichaam en haar.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="behandelingen.html" class="px-8 py-4 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg transition-all hover:scale-[1.02]">Ontdek onze behandelingen</a>
-                <a href="boek.html" class="px-8 py-4 border border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg transition-all hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230]">Boek direct</a>
+                <a href="behandelingen.html" class="px-10 py-4.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-3xl text-lg font-semibold flex items-center justify-center gap-x-3 hover:scale-[1.02] active:scale-[0.985] transition-all">
+                    Ontdek onze behandelingen
+                </a>
+                <a href="boek.html" class="px-10 py-4.5 border-2 border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-3xl text-lg font-semibold flex items-center justify-center gap-x-3 hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">
+                    Boek direct
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Services Preview -->
-    <div class="max-w-screen-2xl mx-auto px-6 py-16 border-t border-[#EDE9E3] dark:border-[#3A3230]">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl heading-serif tracking-tight">Onze selectie aan services</h2>
-            <p class="mt-3 text-[#5C5249] dark:text-[#B8B0A8]">Effectief, veilig en persoonlijk</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white dark:bg-[#2C2522] p-6 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h4 class="font-semibold">HydraFacial</h4>
-                <p class="text-sm mt-2 text-[#5C5249] dark:text-[#B8B0A8]">Aangepast aan jouw behoeften.</p>
-            </div>
-            <div class="bg-white dark:bg-[#2C2522] p-6 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h4 class="font-semibold">Laser Permanente ontharing</h4>
-                <p class="text-sm mt-2 text-[#5C5249] dark:text-[#B8B0A8]">Pijnloos haarvrij.</p>
-            </div>
-            <div class="bg-white dark:bg-[#2C2522] p-6 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h4 class="font-semibold">Vetbevriezing</h4>
-                <p class="text-sm mt-2 text-[#5C5249] dark:text-[#B8B0A8]">Verwijderd plaatselijke vet dmv koeling.</p>
-            </div>
-            <div class="bg-white dark:bg-[#2C2522] p-6 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h4 class="font-semibold">Emsculpt</h4>
-                <p class="text-sm mt-2 text-[#5C5249] dark:text-[#B8B0A8]">Huidversteviging en strakker lichaam.</p>
-            </div>
-        </div>
-
-        <div class="text-center mt-10">
-            <a href="behandelingen.html" class="inline-block px-8 py-3 border border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-2xl font-medium hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">Bekijk alle behandelingen →</a>
-        </div>
-    </div>
-
-    <!-- Testimonials Section -->
-    <div class="max-w-screen-2xl mx-auto px-6 py-16 bg-white dark:bg-[#2C2522] border-y border-[#EDE9E3] dark:border-[#3A3230]">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl heading-serif tracking-tight">Wat onze klanten zeggen</h2>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-[#F8F5F2] dark:bg-[#1A1614] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230]">
-                <div class="flex text-[#C9A26B] mb-4">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+    <!-- TRUST BAR -->
+    <div class="bg-white dark:bg-[#2C2522] border-y border-[#EDE9E3] dark:border-[#3A3230] py-8">
+        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-y-8">
+            <div class="flex items-center gap-x-4">
+                <i class="fas fa-check-circle text-[#C9A26B] text-3xl"></i>
+                <div>
+                    <div class="font-semibold">Medisch gecertificeerd</div>
+                    <div class="text-sm text-[#5C5249] dark:text-[#B8B0A8]">FDA &amp; CE goedgekeurd</div>
                 </div>
-                <p class="italic text-[#5C5249] dark:text-[#B8B0A8]">“De HydraFacial heeft mijn huid compleet getransformeerd. Ik krijg constant complimenten!”</p>
-                <div class="mt-6 font-semibold">— Emma, 34</div>
             </div>
-
-            <div class="bg-[#F8F5F2] dark:bg-[#1A1614] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230]">
-                <div class="flex text-[#C9A26B] mb-4">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+            <div class="flex items-center gap-x-4">
+                <i class="fas fa-check-circle text-[#C9A26B] text-3xl"></i>
+                <div>
+                    <div class="font-semibold">10.000+ behandelingen</div>
+                    <div class="text-sm text-[#5C5249] dark:text-[#B8B0A8]">Sinds 2018</div>
                 </div>
-                <p class="italic text-[#5C5249] dark:text-[#B8B0A8]">“Na 6 sessies laserontharing ben ik eindelijk haarvrij. Geen irritatie, geen ingegroeide haren meer.”</p>
-                <div class="mt-6 font-semibold">— Laura, 29</div>
             </div>
-
-            <div class="bg-[#F8F5F2] dark:bg-[#1A1614] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230]">
-                <div class="flex text-[#C9A26B] mb-4">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+            <div class="flex items-center gap-x-4">
+                <i class="fas fa-check-circle text-[#C9A26B] text-3xl"></i>
+                <div>
+                    <div class="font-semibold">4.98/5</div>
+                    <div class="text-sm text-[#5C5249] dark:text-[#B8B0A8]">Gemiddelde beoordeling</div>
                 </div>
-                <p class="italic text-[#5C5249] dark:text-[#B8B0A8]">“Emsculpt heeft mijn buik sterker gemaakt dan ik ooit voor mogelijk hield. Ik zie en voel het verschil!”</p>
-                <div class="mt-6 font-semibold">— Thomas, 41</div>
+            </div>
+            <div class="flex items-center gap-x-4">
+                <i class="fas fa-check-circle text-[#C9A26B] text-3xl"></i>
+                <div>
+                    <div class="font-semibold">Geen hersteltijd</div>
+                    <div class="text-sm text-[#5C5249] dark:text-[#B8B0A8]">Direct terug naar dagelijks leven</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-10 mt-16">
-        <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
-            © 2026 Skinnovation LAB • Malemstraat 1, 9000 Gent • 0477 88 99 50
+    <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-12 mt-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <div class="text-sm">
+                © 2026 Skinnovation LAB • Malemstraat 1, 9000 Gent • 0477 88 99 50
+            </div>
         </div>
     </footer>
 
