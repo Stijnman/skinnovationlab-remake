@@ -6,10 +6,14 @@
     <title>Boek nu | Skinnovation LAB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+    </style>
 </head>
 <body class="bg-[#F8F5F2] text-[#2C2522]">
     <nav class="bg-white border-b sticky top-0 z-50">
-        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex justify-between items-center">
+        <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-x-3">
                 <div class="w-9 h-9 bg-[#2C2522] rounded-full flex items-center justify-center">
                     <span class="text-white font-bold text-xl">S</span>
@@ -32,23 +36,25 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-8 py-6">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-5">
             <div class="flex flex-col gap-y-4 text-lg">
-                <a href="index.html" class="py-2 hover:text-[#C9A26B]">Home</a>
-                <a href="over-ons.html" class="py-2 hover:text-[#C9A26B]">Over ons</a>
-                <a href="behandelingen.html" class="py-2 hover:text-[#C9A26B]">Behandelingen</a>
-                <a href="resultaten.html" class="py-2 hover:text-[#C9A26B]">Resultaten</a>
-                <a href="contact.html" class="py-2 hover:text-[#C9A26B]">Contact</a>
+                <a href="index.html" class="py-2">Home</a>
+                <a href="over-ons.html" class="py-2">Over ons</a>
+                <a href="behandelingen.html" class="py-2">Behandelingen</a>
+                <a href="resultaten.html" class="py-2">Resultaten</a>
+                <a href="contact.html" class="py-2">Contact</a>
             </div>
         </div>
     </nav>
 
-    <div class="max-w-screen-2xl mx-auto px-8 py-16">
-        <h1 class="text-5xl heading-serif">Boek uw behandeling</h1>
-        <p class="mt-4">Kies een datum en tijd die u past.</p>
-        
-        <div class="mt-10 max-w-2xl">
-            <div class="bg-white p-8 rounded-3xl border">
+    <div class="max-w-screen-2xl mx-auto px-6 py-12">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter">Boek uw behandeling</h1>
+                <p class="mt-4 text-xl text-[#5C5249]">Kies een datum en tijd die u past. We bevestigen binnen 24u.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border shadow-xl">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium mb-2">Kies een datum</label>
@@ -61,28 +67,47 @@
                             <option>10:00 - 10:45</option>
                             <option>13:00 - 13:45</option>
                             <option>14:00 - 14:45</option>
+                            <option>15:00 - 15:45</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="mt-6">
                     <label class="block text-sm font-medium mb-2">Behandeling</label>
                     <select class="w-full border p-4 rounded-2xl">
                         <option>Basis Vetbevriezing (1 zone) - €299</option>
                         <option>Duo Vetbevriezing (2 zones) - €499</option>
-                        <option>Premium Pakket - €699</option>
+                        <option>Premium Pakket (3 zones) - €699</option>
                     </select>
                 </div>
-                
-                <button onclick="alert('✅ Afspraak geboekt! We bevestigen binnen 24u.')" 
-                        class="mt-8 w-full py-4 bg-[#2C2522] text-white rounded-2xl font-medium text-lg">
-                    Bevestig afspraak
+
+                <div class="mt-6">
+                    <label class="block text-sm font-medium mb-2">Uw naam</label>
+                    <input type="text" class="w-full border p-4 rounded-2xl" placeholder="Voor- en achternaam">
+                </div>
+
+                <button onclick="bookAppointment()" 
+                        class="mt-8 w-full py-4 bg-[#2C2522] text-white rounded-2xl font-medium text-lg flex items-center justify-center gap-x-3 hover:bg-black transition-all">
+                    <span>Bevestig afspraak</span>
+                    <i class="fas fa-check"></i>
                 </button>
+
+                <p class="text-center text-xs text-[#5C5249] mt-4">We bevestigen uw afspraak binnen 24 uur via e-mail.</p>
             </div>
         </div>
     </div>
 
+    <footer class="bg-[#2C2522] text-white/80 py-10 mt-16">
+        <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
+            © 2026 Skinnovation LAB • Leuvensesteenweg 250, 1000 Brussel
+        </div>
+    </footer>
+
     <script>
+        function bookAppointment() {
+            alert('✅ Afspraak succesvol geboekt!\n\nWe sturen u een bevestigingsmail.');
+        }
+
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileBtn && mobileMenu) {
