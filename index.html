@@ -11,130 +11,98 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.1; }
-        .nav-link { transition: all 0.2s ease; }
-        .nav-link:hover { color: #C9A26B; }
     </style>
 </head>
-<body class="bg-[#F8F5F2] text-[#2C2522]">
-    <!-- NAV -->
-    <nav class="bg-white border-b sticky top-0 z-50">
+<body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
+    <nav class="bg-white dark:bg-[#2C2522] border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-[#2C2522] rounded-full flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">S</span>
+                <div class="w-9 h-9 bg-[#2C2522] dark:bg-[#C9A26B] rounded-full flex items-center justify-center">
+                    <span class="text-white dark:text-[#2C2522] font-bold text-xl">S</span>
                 </div>
                 <span class="font-semibold text-2xl">Skinnovation <span class="text-[#C9A26B]">LAB</span></span>
             </div>
 
-            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="over-ons.html" class="nav-link">Over ons</a>
-                <a href="behandelingen.html" class="nav-link">Behandelingen</a>
-                <a href="resultaten.html" class="nav-link">Resultaten</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] text-white rounded-full text-sm font-medium hover:bg-black transition-all">Boek nu</a>
+                <a href="over-ons.html" class="hover:text-[#C9A26B]">Over ons</a>
+                <a href="behandelingen.html" class="hover:text-[#C9A26B]">Behandelingen</a>
+                <a href="resultaten.html" class="hover:text-[#C9A26B]">Resultaten</a>
+                <a href="contact.html" class="hover:text-[#C9A26B]">Contact</a>
+                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3]">Boek nu</a>
             </div>
 
-            <!-- Mobile Hamburger -->
-            <div class="md:hidden">
-                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
-                    <i class="fas fa-bars"></i>
+            <div class="flex items-center gap-x-4">
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
                 </button>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-5">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
             <div class="flex flex-col gap-y-4 text-lg">
                 <a href="over-ons.html" class="py-2">Over ons</a>
                 <a href="behandelingen.html" class="py-2">Behandelingen</a>
                 <a href="resultaten.html" class="py-2">Resultaten</a>
                 <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] text-white rounded-2xl font-medium">Boek nu</a>
+                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
     <header class="max-w-screen-2xl mx-auto px-6 pt-12 pb-16">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EDE9E3] text-sm mb-6">
-                    <span class="w-2 h-2 bg-[#C9A26B] rounded-full mr-2"></span>
-                    <span>Nieuw in 2026 • Medisch gecertificeerd</span>
-                </div>
-                
                 <h1 class="text-6xl md:text-7xl leading-none tracking-tighter heading-serif mb-6">
                     Vetbevriezing<br>dat écht werkt.
                 </h1>
-                
-                <p class="text-xl text-[#5C5249] max-w-md mb-8">
+                <p class="text-xl text-[#5C5249] dark:text-[#B8B0A8] max-w-md mb-8">
                     Veilig, effectief en zonder operatie. Bereik een strakkere, slankere contour in 1-3 sessies.
                 </p>
-                
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="boek.html" class="px-8 py-4 bg-[#2C2522] text-white rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">
-                        Boek je behandeling
-                    </a>
-                    <a href="over-ons.html" class="px-8 py-4 border border-[#C9A26B] text-[#2C2522] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">
-                        Meer weten
-                    </a>
+                    <a href="boek.html" class="px-8 py-4 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">Boek je behandeling</a>
+                    <a href="over-ons.html" class="px-8 py-4 border border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">Meer weten</a>
                 </div>
             </div>
-            
             <div class="relative mt-10 md:mt-0">
-                <img src="https://picsum.photos/id/1011/900/700" class="rounded-3xl shadow-2xl w-full" alt="Vetbevriezing resultaat">
-                <div class="absolute -bottom-5 -left-5 bg-white p-5 rounded-2xl shadow-xl">
-                    <div class="flex items-center gap-x-4">
-                        <div>
-                            <div class="text-sm text-[#5C5249]">Gemiddelde vetreductie</div>
-                            <div class="text-4xl font-semibold">22-30%</div>
-                        </div>
-                    </div>
-                </div>
+                <img src="https://picsum.photos/id/1011/900/700" class="rounded-3xl shadow-2xl w-full" alt="Resultaat">
             </div>
         </div>
     </header>
 
-    <!-- TRUST BAR -->
-    <div class="bg-white border-y py-8">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-check-circle text-[#C9A26B] text-3xl mb-3"></i>
-                    <div class="font-medium">Medisch gecertificeerd</div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-check-circle text-[#C9A26B] text-3xl mb-3"></i>
-                    <div class="font-medium">FDA goedgekeurd</div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-check-circle text-[#C9A26B] text-3xl mb-3"></i>
-                    <div class="font-medium">Geen hersteltijd</div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-check-circle text-[#C9A26B] text-3xl mb-3"></i>
-                    <div class="font-medium">Resultaat in 4-8 weken</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="bg-[#2C2522] text-white/80 py-10 mt-16">
+    <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-10 mt-16">
         <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
-            © 2026 Skinnovation LAB • Leuvensesteenweg 250, 1000 Brussel • 0477 88 99 50
+            © 2026 Skinnovation LAB • Leuvensesteenweg 250, 1000 Brussel
         </div>
     </footer>
 
     <script>
+        // Dark Mode
+        const toggle = document.getElementById('dark-mode-toggle');
+        const html = document.documentElement;
+
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+
+        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileBtn && mobileMenu) {
             mobileBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-                const icon = mobileBtn.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
             });
         }
     </script>

@@ -11,12 +11,12 @@
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
     </style>
 </head>
-<body class="bg-[#F8F5F2] text-[#2C2522]">
-    <nav class="bg-white border-b sticky top-0 z-50">
+<body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
+    <nav class="bg-white dark:bg-[#2C2522] border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
         <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-[#2C2522] rounded-full flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">S</span>
+                <div class="w-9 h-9 bg-[#2C2522] dark:bg-[#C9A26B] rounded-full flex items-center justify-center">
+                    <span class="text-white dark:text-[#2C2522] font-bold text-xl">S</span>
                 </div>
                 <span class="font-semibold text-2xl">Skinnovation <span class="text-[#C9A26B]">LAB</span></span>
             </div>
@@ -26,23 +26,29 @@
                 <a href="over-ons.html" class="hover:text-[#C9A26B]">Over ons</a>
                 <a href="resultaten.html" class="hover:text-[#C9A26B]">Resultaten</a>
                 <a href="contact.html" class="hover:text-[#C9A26B]">Contact</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] text-white rounded-full text-sm font-medium hover:bg-black">Boek nu</a>
+                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3]">Boek nu</a>
             </div>
 
-            <div class="md:hidden">
-                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
-                    <i class="fas fa-bars"></i>
+            <div class="flex items-center gap-x-4">
+                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
                 </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-5">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
             <div class="flex flex-col gap-y-4 text-lg">
                 <a href="index.html" class="py-2">Home</a>
                 <a href="over-ons.html" class="py-2">Over ons</a>
                 <a href="resultaten.html" class="py-2">Resultaten</a>
                 <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] text-white rounded-2xl font-medium">Boek nu</a>
+                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
             </div>
         </div>
     </nav>
@@ -50,74 +56,71 @@
     <div class="max-w-screen-2xl mx-auto px-6 py-12">
         <div class="text-center mb-12">
             <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter">Onze Behandelingen</h1>
-            <p class="mt-4 text-xl text-[#5C5249]">Veilige en effectieve vetbevriezing op maat</p>
+            <p class="mt-4 text-xl text-[#5C5249] dark:text-[#B8B0A8]">Veilige en effectieve vetbevriezing op maat</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Treatment 1 -->
-            <div class="bg-white rounded-3xl p-8 border hover:shadow-xl transition-all">
+            <div class="bg-white dark:bg-[#2C2522] rounded-3xl p-8 border border-[#EDE9E3] dark:border-[#3A3230] hover:shadow-xl transition-all">
                 <div class="uppercase text-xs tracking-[1px] text-[#C9A26B] font-medium">Meest gekozen</div>
                 <h3 class="text-3xl font-semibold mt-4">Basis Zone</h3>
-                <div class="mt-6">
-                    <span class="text-6xl font-semibold">€299</span>
-                </div>
-                <ul class="mt-8 space-y-4 text-[#5C5249]">
+                <div class="mt-6"><span class="text-6xl font-semibold">€299</span></div>
+                <ul class="mt-8 space-y-4 text-[#5C5249] dark:text-[#B8B0A8]">
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 1 zone (buik, flanken, kin of dijen)</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 45 minuten behandeling</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> Persoonlijk consult inbegrepen</li>
-                    <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> Geen hersteltijd</li>
                 </ul>
-                <a href="boek.html" class="mt-8 block w-full py-4 text-center border border-[#2C2522] rounded-2xl font-medium hover:bg-[#2C2522] hover:text-white transition-all">Kies deze behandeling</a>
+                <a href="boek.html" class="mt-8 block w-full py-4 text-center border border-[#2C2522] dark:border-[#C9A26B] rounded-2xl font-medium hover:bg-[#2C2522] hover:text-white dark:hover:bg-[#C9A26B] dark:hover:text-[#2C2522] transition-all">Kies deze behandeling</a>
             </div>
 
-            <!-- Treatment 2 -->
-            <div class="bg-white rounded-3xl p-8 border border-[#C9A26B] relative scale-[1.02] shadow-xl">
+            <div class="bg-white dark:bg-[#2C2522] rounded-3xl p-8 border border-[#C9A26B] relative scale-[1.02] shadow-xl">
                 <div class="absolute -top-4 right-6 bg-[#C9A26B] text-white text-xs px-5 py-1 rounded-full">BESTE WAARDE</div>
                 <h3 class="text-3xl font-semibold mt-4">Duo Pakket</h3>
-                <div class="mt-6">
-                    <span class="text-6xl font-semibold">€499</span>
-                </div>
-                <ul class="mt-8 space-y-4 text-[#5C5249]">
+                <div class="mt-6"><span class="text-6xl font-semibold">€499</span></div>
+                <ul class="mt-8 space-y-4 text-[#5C5249] dark:text-[#B8B0A8]">
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 2 zones naar keuze</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 60 minuten behandeling</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> Gratis follow-up consult</li>
-                    <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 15% extra vetreductie</li>
                 </ul>
-                <a href="boek.html" class="mt-8 block w-full py-4 text-center bg-[#2C2522] text-white rounded-2xl font-medium hover:bg-black transition-all">Kies dit pakket</a>
+                <a href="boek.html" class="mt-8 block w-full py-4 text-center bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Kies dit pakket</a>
             </div>
 
-            <!-- Treatment 3 -->
-            <div class="bg-white rounded-3xl p-8 border hover:shadow-xl transition-all">
+            <div class="bg-white dark:bg-[#2C2522] rounded-3xl p-8 border border-[#EDE9E3] dark:border-[#3A3230] hover:shadow-xl transition-all">
                 <h3 class="text-3xl font-semibold mt-4">Premium Pakket</h3>
-                <div class="mt-6">
-                    <span class="text-6xl font-semibold">€699</span>
-                </div>
-                <ul class="mt-8 space-y-4 text-[#5C5249]">
+                <div class="mt-6"><span class="text-6xl font-semibold">€699</span></div>
+                <ul class="mt-8 space-y-4 text-[#5C5249] dark:text-[#B8B0A8]">
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 3 zones</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 2 sessies</li>
                     <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> Persoonlijk nazorgtraject</li>
-                    <li class="flex gap-3"><i class="fas fa-check text-[#C9A26B] mt-1"></i> 6 maanden garantie</li>
                 </ul>
-                <a href="boek.html" class="mt-8 block w-full py-4 text-center border border-[#2C2522] rounded-2xl font-medium hover:bg-[#2C2522] hover:text-white transition-all">Kies premium</a>
+                <a href="boek.html" class="mt-8 block w-full py-4 text-center border border-[#2C2522] dark:border-[#C9A26B] rounded-2xl font-medium hover:bg-[#2C2522] hover:text-white dark:hover:bg-[#C9A26B] dark:hover:text-[#2C2522] transition-all">Kies premium</a>
             </div>
         </div>
     </div>
 
-    <footer class="bg-[#2C2522] text-white/80 py-10 mt-16">
+    <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-10 mt-16">
         <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
             © 2026 Skinnovation LAB • Leuvensesteenweg 250, 1000 Brussel
         </div>
     </footer>
 
     <script>
+        const toggle = document.getElementById('dark-mode-toggle');
+        const html = document.documentElement;
+
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileBtn && mobileMenu) {
             mobileBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-                const icon = mobileBtn.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
             });
         }
     </script>
