@@ -9,6 +9,8 @@
     <style>
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+        .fade-in { animation: fadeInUp 0.8s ease forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
@@ -22,15 +24,15 @@
             </div>
 
             <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="index.html" class="hover:text-[#C9A26B]">Home</a>
-                <a href="over-ons.html" class="hover:text-[#C9A26B]">Over ons</a>
-                <a href="behandelingen.html" class="hover:text-[#C9A26B]">Behandelingen</a>
-                <a href="resultaten.html" class="hover:text-[#C9A26B]">Resultaten</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3]">Boek nu</a>
+                <a href="index.html" class="hover:text-[#C9A26B] transition-colors">Home</a>
+                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-colors">Over ons</a>
+                <a href="behandelingen.html" class="hover:text-[#C9A26B] transition-colors">Behandelingen</a>
+                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-colors">Resultaten</a>
+                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
             </div>
 
             <div class="flex items-center gap-x-4">
-                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full">
+                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full transition-all">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block"></i>
                 </button>
@@ -44,19 +46,19 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
             <div class="flex flex-col gap-y-4 text-lg">
-                <a href="index.html" class="py-2">Home</a>
-                <a href="over-ons.html" class="py-2">Over ons</a>
-                <a href="behandelingen.html" class="py-2">Behandelingen</a>
-                <a href="resultaten.html" class="py-2">Resultaten</a>
-                <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
+                <a href="index.html" class="py-2 transition-colors">Home</a>
+                <a href="over-ons.html" class="py-2 transition-colors">Over ons</a>
+                <a href="behandelingen.html" class="py-2 transition-colors">Behandelingen</a>
+                <a href="resultaten.html" class="py-2 transition-colors">Resultaten</a>
+                <a href="contact.html" class="py-2 transition-colors">Contact</a>
+                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium transition-all">Boek nu</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-screen-2xl mx-auto px-6 py-12">
         <div class="grid md:grid-cols-2 gap-16">
-            <div>
+            <div class="fade-in">
                 <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter">Neem contact op</h1>
                 <p class="mt-6 text-xl text-[#5C5249] dark:text-[#B8B0A8]">Heeft u vragen of wilt u een persoonlijk advies? Wij staan voor u klaar.</p>
 
@@ -85,25 +87,25 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230]">
+            <div class="bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] fade-in" style="animation-delay: 0.1s">
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium mb-2">Naam</label>
-                            <input type="text" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]" placeholder="Uw naam">
+                            <input type="text" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Telefoon</label>
-                            <input type="tel" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]" placeholder="0477 12 34 56">
+                            <input type="tel" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2">E-mail</label>
-                        <input type="email" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]" placeholder="uw@email.be">
+                        <input type="email" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2">Bericht</label>
-                        <textarea class="w-full border p-4 rounded-2xl h-32 bg-white dark:bg-[#2C2522]" placeholder="Stel uw vraag..."></textarea>
+                        <textarea class="w-full border p-4 rounded-2xl h-32 bg-white dark:bg-[#2C2522]"></textarea>
                     </div>
                     <button type="button" class="w-full py-4 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium text-lg hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">
                         Verstuur bericht
@@ -112,7 +114,7 @@
             </div>
         </div>
 
-        <div class="mt-16 rounded-3xl overflow-hidden shadow-xl">
+        <div class="mt-16 rounded-3xl overflow-hidden shadow-xl fade-in" style="animation-delay: 0.2s">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.8!2d4.351!3d50.847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c3e5e5e5e5e5%3A0x1234567890abcdef!2sLeuvensesteenweg%20250%2C%201000%20Brussel!5e0!3m2!1snl!2sbe!4v1234567890123" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
@@ -143,6 +145,22 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>

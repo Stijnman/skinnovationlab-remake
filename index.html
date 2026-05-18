@@ -11,6 +11,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.1; }
+        .fade-in { animation: fadeInUp 0.8s ease forwards; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
     </style>
 </head>
 <body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
@@ -24,16 +31,15 @@
             </div>
 
             <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="over-ons.html" class="hover:text-[#C9A26B]">Over ons</a>
-                <a href="behandelingen.html" class="hover:text-[#C9A26B]">Behandelingen</a>
-                <a href="resultaten.html" class="hover:text-[#C9A26B]">Resultaten</a>
-                <a href="contact.html" class="hover:text-[#C9A26B]">Contact</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3]">Boek nu</a>
+                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-colors">Over ons</a>
+                <a href="behandelingen.html" class="hover:text-[#C9A26B] transition-colors">Behandelingen</a>
+                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-colors">Resultaten</a>
+                <a href="contact.html" class="hover:text-[#C9A26B] transition-colors">Contact</a>
+                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
             </div>
 
             <div class="flex items-center gap-x-4">
-                <!-- Dark Mode Toggle -->
-                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full">
+                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full transition-all">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block"></i>
                 </button>
@@ -46,20 +52,20 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5 transition-all">
             <div class="flex flex-col gap-y-4 text-lg">
-                <a href="over-ons.html" class="py-2">Over ons</a>
-                <a href="behandelingen.html" class="py-2">Behandelingen</a>
-                <a href="resultaten.html" class="py-2">Resultaten</a>
-                <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
+                <a href="over-ons.html" class="py-2 transition-colors">Over ons</a>
+                <a href="behandelingen.html" class="py-2 transition-colors">Behandelingen</a>
+                <a href="resultaten.html" class="py-2 transition-colors">Resultaten</a>
+                <a href="contact.html" class="py-2 transition-colors">Contact</a>
+                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium transition-all">Boek nu</a>
             </div>
         </div>
     </nav>
 
     <header class="max-w-screen-2xl mx-auto px-6 pt-12 pb-16">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div class="fade-in">
                 <h1 class="text-6xl md:text-7xl leading-none tracking-tighter heading-serif mb-6">
                     Vetbevriezing<br>dat écht werkt.
                 </h1>
@@ -67,12 +73,12 @@
                     Veilig, effectief en zonder operatie. Bereik een strakkere, slankere contour in 1-3 sessies.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="boek.html" class="px-8 py-4 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">Boek je behandeling</a>
-                    <a href="over-ons.html" class="px-8 py-4 border border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg">Meer weten</a>
+                    <a href="boek.html" class="px-8 py-4 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg transition-all hover:scale-[1.02]">Boek je behandeling</a>
+                    <a href="over-ons.html" class="px-8 py-4 border border-[#C9A26B] text-[#2C2522] dark:text-[#EDE9E3] rounded-2xl font-medium flex items-center justify-center gap-x-3 text-lg transition-all hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230]">Meer weten</a>
                 </div>
             </div>
-            <div class="relative mt-10 md:mt-0">
-                <img src="https://picsum.photos/id/1011/900/700" class="rounded-3xl shadow-2xl w-full" alt="Resultaat">
+            <div class="relative mt-10 md:mt-0 fade-in" style="animation-delay: 0.2s">
+                <img src="https://picsum.photos/id/1011/900/700" class="rounded-3xl shadow-2xl w-full transition-transform hover:scale-[1.01]" alt="Resultaat">
             </div>
         </div>
     </header>
@@ -105,6 +111,23 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
+
+        // Fade in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
