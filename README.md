@@ -2,6 +2,9 @@
 
 **Modern, fully optimized multi-page website for Skinnovation LAB** — Premium aesthetic clinic in Ghent.
 
+## 🚀 **Live Preview**
+**https://stijnman.github.io/skinnovationlab-remake**
+
 ## ✨ Features
 
 - All original services from skinnovationlab.be
@@ -12,9 +15,6 @@
 - Smooth scroll animations
 - Fully responsive mobile design
 - Professional modern design
-
-## 🚀 Live Demo
-https://stijnman.github.io/skinnovationlab-remake
 
 ## 📁 Pages
 - `index.html` — Home with testimonials
