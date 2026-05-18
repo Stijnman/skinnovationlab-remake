@@ -3,116 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Behandelingen | Skinnovation LAB</title>
+    <title>Behandelingen | Skinnovation LAB — V1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Instrument+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+        body { font-family: 'Instrument Sans', system_ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.025em; }
+        .premium-shadow { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08); }
     </style>
 </head>
 <body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
-    <nav class="bg-white dark:bg-[#2C2522] border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
-        <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-[#2C2522] dark:bg-[#C9A26B] rounded-full flex items-center justify-center">
-                    <span class="text-white dark:text-[#2C2522] font-bold text-xl">S</span>
-                </div>
-                <span class="font-semibold text-2xl">Skinnovation <span class="text-[#C9A26B]">LAB</span></span>
-            </div>
-
-            <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="index.html" class="hover:text-[#C9A26B] transition-colors">Home</a>
-                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-colors">Over ons</a>
-                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-colors">Resultaten</a>
-                <a href="contact.html" class="hover:text-[#C9A26B] transition-colors">Contact</a>
-                <a href="boek.html" class="px-6 py-2.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-full text-sm font-medium hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
-            </div>
-
+    <nav class="bg-white/90 dark:bg-[#2C2522]/90 backdrop-blur-xl border-b border-[#EDE9E3] dark:border-[#3A3230] sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex justify-between items-center">
             <div class="flex items-center gap-x-4">
-                <button id="dark-mode-toggle" class="w-10 h-10 flex items-center justify-center text-xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-full transition-all">
+                <div class="w-10 h-10 bg-[#2C2522] dark:bg-[#C9A26B] rounded-2xl flex items-center justify-center">
+                    <span class="text-white dark:text-[#2C2522] font-bold text-2xl">S</span>
+                </div>
+                <div>
+                    <span class="font-semibold text-3xl tracking-tight">Skinnovation</span>
+                    <span class="text-[#C9A26B] font-light text-3xl">LAB</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-x-10 text-[15px]">
+                <a href="index.html" class="hover:text-[#C9A26B] transition-all font-medium">Home</a>
+                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-all font-medium">Over ons</a>
+                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-all font-medium">Resultaten</a>
+                <a href="contact.html" class="hover:text-[#C9A26B] transition-all font-medium">Contact</a>
+                <a href="boek.html" class="px-8 py-3.5 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-3xl text-[15px] font-semibold hover:bg-black dark:hover:bg-[#EDE9E3] transition-all">Boek nu</a>
+            </div>
+            <div class="flex items-center gap-x-3">
+                <button id="dark-mode-toggle" class="w-11 h-11 flex items-center justify-center text-2xl hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] rounded-2xl transition-all">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block"></i>
                 </button>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
+                    <button id="mobile-menu-btn" class="w-11 h-11 flex items-center justify-center text-3xl">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
-            <div class="flex flex-col gap-y-4 text-lg">
-                <a href="index.html" class="py-2">Home</a>
-                <a href="over-ons.html" class="py-2">Over ons</a>
-                <a href="resultaten.html" class="py-2">Resultaten</a>
-                <a href="contact.html" class="py-2">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium">Boek nu</a>
-            </div>
-        </div>
     </nav>
 
-    <div class="max-w-screen-2xl mx-auto px-6 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter">Onze Behandelingen</h1>
-            <p class="mt-4 text-xl text-[#5C5249] dark:text-[#B8B0A8]">Effectief, veilig en persoonlijk</p>
+    <div class="max-w-screen-2xl mx-auto px-8 py-16">
+        <div class="text-center mb-16">
+            <div class="text-sm text-[#C9A26B] font-medium tracking-[1px] mb-4">V1</div>
+            <h1 class="text-[64px] leading-none tracking-[-3px] heading-serif mb-6">Onze Behandelingen</h1>
+            <p class="text-2xl text-[#5C5249] dark:text-[#B8B0A8]">Effectief, veilig en persoonlijk</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Service Cards with links to detail pages -->
-            <a href="hydrafacial.html" class="block bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h3 class="text-2xl font-semibold">HydraFacial</h3>
-                <p class="mt-3 text-[#5C5249] dark:text-[#B8B0A8]">Aangepast aan jouw behoeften. Diepe reiniging, hydratatie en glow.</p>
-                <div class="mt-6 text-[#C9A26B] font-medium flex items-center gap-2">Meer info →</div>
-            </a>
+            <div class="bg-white dark:bg-[#2C2522] p-10 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] premium-shadow">
+                <h3 class="text-4xl font-semibold mb-4">HydraFacial</h3>
+                <p class="text-[#5C5249] dark:text-[#B8B0A8] text-lg">Aangepast aan jouw behoeften. Diepe reiniging, hydratatie en glow.</p>
+                <a href="hydrafacial.html" class="mt-8 inline-block px-8 py-3 border border-[#C9A26B] rounded-3xl text-sm font-semibold hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">Meer info →</a>
+            </div>
 
-            <a href="laser-ontharing.html" class="block bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h3 class="text-2xl font-semibold">Laser Permanente ontharing</h3>
-                <p class="mt-3 text-[#5C5249] dark:text-[#B8B0A8]">Pijnloos haarvrij. Effectieve en veilige laserontharing.</p>
-                <div class="mt-6 text-[#C9A26B] font-medium flex items-center gap-2">Meer info →</div>
-            </a>
+            <div class="bg-white dark:bg-[#2C2522] p-10 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] premium-shadow">
+                <h3 class="text-4xl font-semibold mb-4">Laser Permanente ontharing</h3>
+                <p class="text-[#5C5249] dark:text-[#B8B0A8] text-lg">Pijnloos haarvrij. Effectieve en veilige laserontharing.</p>
+                <a href="laser-ontharing.html" class="mt-8 inline-block px-8 py-3 border border-[#C9A26B] rounded-3xl text-sm font-semibold hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">Meer info →</a>
+            </div>
 
-            <a href="vetbevriezing.html" class="block bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h3 class="text-2xl font-semibold">Vetbevriezing</h3>
-                <p class="mt-3 text-[#5C5249] dark:text-[#B8B0A8]">Verwijderd plaatselijke vet dmv gecontroleerde koeling.</p>
-                <div class="mt-6 text-[#C9A26B] font-medium flex items-center gap-2">Meer info →</div>
-            </a>
+            <div class="bg-white dark:bg-[#2C2522] p-10 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] premium-shadow">
+                <h3 class="text-4xl font-semibold mb-4">Vetbevriezing</h3>
+                <p class="text-[#5C5249] dark:text-[#B8B0A8] text-lg">Permanent vet verwijderen zonder operatie of hersteltijd.</p>
+                <a href="vetbevriezing.html" class="mt-8 inline-block px-8 py-3 border border-[#C9A26B] rounded-3xl text-sm font-semibold hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">Meer info →</a>
+            </div>
 
-            <a href="emsculpt.html" class="block bg-white dark:bg-[#2C2522] p-8 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] card-hover">
-                <h3 class="text-2xl font-semibold">Emsculpt</h3>
-                <p class="mt-3 text-[#5C5249] dark:text-[#B8B0A8]">Huidversteviging en een strakker lichaam.</p>
-                <div class="mt-6 text-[#C9A26B] font-medium flex items-center gap-2">Meer info →</div>
-            </a>
+            <div class="bg-white dark:bg-[#2C2522] p-10 rounded-3xl border border-[#EDE9E3] dark:border-[#3A3230] premium-shadow">
+                <h3 class="text-4xl font-semibold mb-4">Emsculpt</h3>
+                <p class="text-[#5C5249] dark:text-[#B8B0A8] text-lg">Huidversteviging en een strakker lichaam.</p>
+                <a href="emsculpt.html" class="mt-8 inline-block px-8 py-3 border border-[#C9A26B] rounded-3xl text-sm font-semibold hover:bg-[#EDE9E3] dark:hover:bg-[#3A3230] transition-all">Meer info →</a>
+            </div>
         </div>
     </div>
 
     <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-10 mt-16">
-        <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
-            © 2026 Skinnovation LAB • Malemstraat 1, 9000 Gent
+        <div class="max-w-screen-2xl mx-auto px-8 text-center text-sm">
+            Skinnovation LAB V1 • Malemstraat 1, 9000 Gent
         </div>
     </footer>
 
     <script>
         const toggle = document.getElementById('dark-mode-toggle');
         const html = document.documentElement;
-
-        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        }
-
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('darkMode', html.classList.contains('dark'));
-        });
-
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileBtn && mobileMenu) {
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) html.classList.add('dark');
+        toggle.addEventListener('click', () => { html.classList.toggle('dark'); localStorage.setItem('darkMode', html.classList.contains('dark')); });
     </script>
 </body>
 </html>
