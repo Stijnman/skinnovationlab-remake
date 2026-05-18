@@ -9,8 +9,6 @@
     <style>
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
-        .fade-in { animation: fadeInUp 0.8s ease forwards; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-[#F8F5F2] dark:bg-[#1A1614] text-[#2C2522] dark:text-[#EDE9E3]">
@@ -24,11 +22,10 @@
             </div>
 
             <div class="hidden md:flex items-center gap-x-8 text-sm">
-                <a href="index.html" class="hover:text-[#C9A26B] transition-colors">Home</a>
-                <a href="over-ons.html" class="hover:text-[#C9A26B] transition-colors">Over ons</a>
-                <a href="behandelingen.html" class="hover:text-[#C9A26B] transition-colors">Behandelingen</a>
-                <a href="resultaten.html" class="hover:text-[#C9A26B] transition-colors">Resultaten</a>
-                <a href="contact.html" class="hover:text-[#C9A26B] transition-colors">Contact</a>
+                <a href="index.html" class="hover:text-[#C9A26B]">Home</a>
+                <a href="over-ons.html" class="hover:text-[#C9A26B]">Over ons</a>
+                <a href="behandelingen.html" class="hover:text-[#C9A26B]">Behandelingen</a>
+                <a href="contact.html" class="hover:text-[#C9A26B]">Contact</a>
             </div>
 
             <div class="flex items-center gap-x-4">
@@ -36,22 +33,6 @@
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block"></i>
                 </button>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-2xl">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#2C2522] border-t px-6 py-5">
-            <div class="flex flex-col gap-y-4 text-lg">
-                <a href="index.html" class="py-2 transition-colors">Home</a>
-                <a href="over-ons.html" class="py-2 transition-colors">Over ons</a>
-                <a href="behandelingen.html" class="py-2 transition-colors">Behandelingen</a>
-                <a href="resultaten.html" class="py-2 transition-colors">Resultaten</a>
-                <a href="contact.html" class="py-2 transition-colors">Contact</a>
-                <a href="boek.html" class="mt-3 w-full text-center py-3 bg-[#2C2522] dark:bg-[#C9A26B] text-white dark:text-[#2C2522] rounded-2xl font-medium transition-all">Boek nu</a>
             </div>
         </div>
     </nav>
@@ -59,11 +40,22 @@
     <div class="max-w-screen-2xl mx-auto px-6 py-12">
         <div class="max-w-2xl mx-auto">
             <div class="text-center mb-10">
-                <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter fade-in">Boek uw behandeling</h1>
-                <p class="mt-4 text-xl text-[#5C5249] dark:text-[#B8B0A8] fade-in" style="animation-delay: 0.1s">Kies een datum en tijd die u past.</p>
+                <h1 class="text-5xl md:text-6xl heading-serif tracking-tighter">Boek uw behandeling</h1>
+                <p class="mt-4 text-xl text-[#5C5249] dark:text-[#B8B0A8]">Kies een behandeling en datum die u past.</p>
             </div>
 
-            <div class="bg-white dark:bg-[#2C2522] rounded-3xl p-8 border border-[#EDE9E3] dark:border-[#3A3230] shadow-xl fade-in" style="animation-delay: 0.2s">
+            <div class="bg-white dark:bg-[#2C2522] rounded-3xl p-8 border border-[#EDE9E3] dark:border-[#3A3230] shadow-xl">
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2">Behandeling</label>
+                    <select id="treatment-select" class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]">
+                        <option value="HydraFacial">HydraFacial - €149</option>
+                        <option value="Laser Ontharing">Laser Permanente ontharing - €89</option>
+                        <option value="Vetbevriezing">Vetbevriezing - €299</option>
+                        <option value="Emsculpt">Emsculpt - €249</option>
+                        <option value="Microneedling RF">Microneedling RF - €179</option>
+                    </select>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium mb-2">Kies een datum</label>
@@ -76,17 +68,9 @@
                             <option>10:00 - 10:45</option>
                             <option>13:00 - 13:45</option>
                             <option>14:00 - 14:45</option>
+                            <option>15:00 - 15:45</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="mt-6">
-                    <label class="block text-sm font-medium mb-2">Behandeling</label>
-                    <select class="w-full border p-4 rounded-2xl bg-white dark:bg-[#2C2522]">
-                        <option>Basis Vetbevriezing (1 zone) - €299</option>
-                        <option>Duo Vetbevriezing (2 zones) - €499</option>
-                        <option>Premium Pakket (3 zones) - €699</option>
-                    </select>
                 </div>
 
                 <div class="mt-6">
@@ -106,18 +90,14 @@
 
     <footer class="bg-[#2C2522] dark:bg-black text-white/80 py-10 mt-16">
         <div class="max-w-screen-2xl mx-auto px-6 text-center text-sm">
-            © 2026 Skinnovation LAB • Leuvensesteenweg 250, 1000 Brussel
+            © 2026 Skinnovation LAB • Malemstraat 1, 9000 Gent
         </div>
     </footer>
 
     <script>
         function bookAppointment() {
-            const btn = event.currentTarget;
-            btn.innerHTML = `<span>Bezig met reserveren...</span>`;
-            setTimeout(() => {
-                alert('✅ Afspraak succesvol geboekt!\n\nWe sturen u een bevestigingsmail.');
-                btn.innerHTML = `<span>Bevestig afspraak</span><i class="fas fa-check ml-2"></i>`;
-            }, 1200);
+            const treatment = document.getElementById('treatment-select').value;
+            alert(`✅ Afspraak succesvol geboekt voor ${treatment}!\n\nWe sturen u een bevestigingsmail.`);
         }
 
         const toggle = document.getElementById('dark-mode-toggle');
@@ -139,22 +119,6 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(el);
-        });
     </script>
 </body>
 </html>
