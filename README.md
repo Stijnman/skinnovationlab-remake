@@ -26,6 +26,13 @@
 - Individual service pages (hydrafacial.html, vetbevriezing.html, etc.)
 
 ## 🚀 Deployment
-GitHub Pages enabled from `main` branch.
+GitHub Pages enabled from `main` branch (`stijnman.github.io/skinnovationlab-remake`).
+
+## ♿ / SEO notes
+- Semantic HTML sections per page
+- Prefer descriptive `title` and meta description on each page when editing
+- Keep booking CTAs consistent across service detail pages
+- Test dark mode + mobile before publish
+
 
 **Made with care for Skinnovation LAB** — 2026
