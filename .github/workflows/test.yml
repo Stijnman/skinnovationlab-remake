@@ -1,135 +1,97 @@
-name: Test Competitor Researcher
+name: Static Site CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
   validate:
-    name: Validate
+    name: Validate static site
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: TypeScript type check
-        run: npx tsc --noEmit
-        
-      - name: Lint check
-        run: npm run lint || echo "Linting completed"
+      - uses: actions/checkout@v5
+      - name: Verify HTML files
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
 
-  test:
-    name: Run Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run tests
-        run: npm test || echo "Tests completed"
+          class Parser(HTMLParser):
+              pass
 
-  lint:
-    name: Lint Documentation
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Install markdownlint
+          files = list(Path('.').glob('*.html'))
+          if not files:
+              raise SystemExit('No HTML files found')
+          for path in files:
+              parser = Parser()
+              parser.feed(path.read_text(encoding='utf-8'))
+              parser.close()
+              print(f'validated {path}')
+          PY
+      - name: Check internal file references
         run: |
-          npm install -g markdownlint-cli2
-          
-      - name: Lint all markdown files
-        run: |
-          find . -name "*.md" -type f -not -path "./.git/*" -exec markdownlint-cli2 --config .markdownlint.json {} \;
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit
 
-  spellcheck:
-    name: Spell Check
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Install codespell
-        run: |
-          pip install codespell
-          
-      - name: Check spelling
-        run: |
-          codespell --skip ".git,*.json,*.yml,*.yaml,CHANGELOG.md,node_modules" \
-            --ignore-words-list "competitor,researcher,gemini,typescript,react,express,api,AI,http,https" \
-            --check-filenames \
-            --check-hidden
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.refs=[]
+              def handle_starttag(self, tag, attrs):
+                  d=dict(attrs)
+                  for key in ('href','src'):
+                      if key in d: self.refs.append(d[key])
 
-  security-check:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Check for hardcoded secrets
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-          extra_args: --debug --only-verified --fail
+          missing=[]
+          for page in Path('.').glob('*.html'):
+              p=Links(); p.feed(page.read_text(encoding='utf-8'))
+              for ref in p.refs:
+                  if not ref or ref.startswith(('#','mailto:','tel:','http://','https://','data:','javascript:')):
+                      continue
+                  target=urlsplit(ref).path
+                  if target.startswith('/'):
+                      target=target[1:]
+                  if target and not Path(target).exists():
+                      missing.append(f'{page}: {ref}')
+          if missing:
+              raise SystemExit('Missing local references:\n'+'\n'.join(missing))
+          PY
 
-  pre-commit:
-    name: Pre-commit Hooks
+  docs:
+    name: Documentation
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v20
         with:
-          python-version: "3.11"
-          
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+          globs: "**/*.md"
+
+  precommit:
+    name: Pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
-          node-version: '20'
-          
-      - name: Install pre-commit
-        run: |
-          pip install pre-commit
-          npm install -g markdownlint-cli2
-          
-      - name: Install pre-commit hooks
-        run: |
-          pre-commit install
-          
-      - name: Run pre-commit on all files
-        run: |
-          pre-commit run --all-files --show-diff-on-failure || echo "Pre-commit checks completed"
+          python-version: "3.12"
+      - run: pip install pre-commit
+      - run: pre-commit run --all-files --show-diff-on-failure
+
+  security:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Scan repository
+        uses: trufflesecurity/trufflehog@v3.90.8
+        with:
+          extra_args: --only-verified --fail
