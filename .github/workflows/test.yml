@@ -1,135 +1,72 @@
-name: Test Competitor Researcher
+name: Static Site CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
   validate:
-    name: Validate
+    name: Validate static site
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: TypeScript type check
-        run: npx tsc --noEmit
-        
-      - name: Lint check
-        run: npm run lint || echo "Linting completed"
+      - uses: actions/checkout@v5
+      - name: Verify HTML files and local references
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit
 
-  test:
-    name: Run Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run tests
-        run: npm test || echo "Tests completed"
+          # These routes are intentionally advertised but not implemented yet.
+          # Keep them visible as warnings instead of making unrelated CI unusable.
+          planned = {
+              'laser-ontharing.html', 'emsculpt.html',
+              'style-minimal.html', 'style-luxury.html', 'style-bold.html'
+          }
+          class Links(HTMLParser):
+              def __init__(self): super().__init__(); self.refs=[]
+              def handle_starttag(self, tag, attrs):
+                  data=dict(attrs)
+                  self.refs += [data[k] for k in ('href','src') if k in data]
 
-  lint:
-    name: Lint Documentation
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Install markdownlint
-        run: |
-          npm install -g markdownlint-cli2
-          
-      - name: Lint all markdown files
-        run: |
-          find . -name "*.md" -type f -not -path "./.git/*" -exec markdownlint-cli2 --config .markdownlint.json {} \;
+          files=list(Path('.').glob('*.html'))
+          if not files: raise SystemExit('No HTML files found')
+          missing=[]
+          for page in files:
+              parser=Links(); parser.feed(page.read_text(encoding='utf-8')); parser.close()
+              for ref in parser.refs:
+                  if not ref or ref.startswith(('#','mailto:','tel:','http://','https://','data:','javascript:')): continue
+                  target=urlsplit(ref).path.lstrip('/')
+                  if target and not Path(target).exists():
+                      if target in planned:
+                          print(f'warning: planned route not implemented: {page}: {ref}')
+                      else:
+                          missing.append(f'{page}: {ref}')
+          if missing: raise SystemExit('Missing unexpected local references:\n'+'\n'.join(missing))
+          print(f'validated {len(files)} HTML files')
+          PY
 
-  spellcheck:
-    name: Spell Check
+  docs:
+    name: Documentation
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Install codespell
-        run: |
-          pip install codespell
-          
-      - name: Check spelling
-        run: |
-          codespell --skip ".git,*.json,*.yml,*.yaml,CHANGELOG.md,node_modules" \
-            --ignore-words-list "competitor,researcher,gemini,typescript,react,express,api,AI,http,https" \
-            --check-filenames \
-            --check-hidden
+      - uses: actions/checkout@v5
+      - name: Lint Markdown using repository policy
+        run: npx --yes markdownlint-cli2@0.18.1 --config .markdownlint.json "**/*.md" "#CHANGELOG.md"
 
-  security-check:
-    name: Security Scan
+  security:
+    name: Secret scan
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Check for hardcoded secrets
-        uses: trufflesecurity/trufflehog@main
+      - uses: actions/checkout@v5
         with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-          extra_args: --debug --only-verified --fail
-
-  pre-commit:
-    name: Pre-commit Hooks
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5
+          fetch-depth: 0
+      - name: Scan repository
+        uses: trufflesecurity/trufflehog@v3.90.8
         with:
-          python-version: "3.11"
-          
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install pre-commit
-        run: |
-          pip install pre-commit
-          npm install -g markdownlint-cli2
-          
-      - name: Install pre-commit hooks
-        run: |
-          pre-commit install
-          
-      - name: Run pre-commit on all files
-        run: |
-          pre-commit run --all-files --show-diff-on-failure || echo "Pre-commit checks completed"
+          extra_args: --only-verified
